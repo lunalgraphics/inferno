@@ -20,4 +20,6 @@
     box-sizing: border-box;
     padding: 12px;
     background-color: grey;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
