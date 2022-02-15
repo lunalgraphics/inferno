@@ -23,3 +23,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.ygui-input {
+    width: 90px;
+}
