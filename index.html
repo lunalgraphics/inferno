@@ -3,41 +3,54 @@
     <head>
         <link rel="icon" href="icon.svg" />
         <title>Inferno</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="lib/ygui.js"></script>
     </head>
     <body>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 871" style="background-color: black;">
-            <filter id="greyflood">
-                <feColorMatrix
-                    type="matrix"
-                    values="
-                    0 0 0 0 0.25
-                    0 0 0 0 0.25
-                    0 0 0 0 0.25
-                    0 0 0 1 0"
-                />
-            </filter>
-            <filter id="transform1" x="-50%" y="-50%" width="200%" height="200%">
-                <feColorMatrix
-                    type="matrix"
-                    in="SourceGraphic"
-                    result="reduced"
-                    values="
-                    1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                    0 0 0 0.069 0"
-                />
-                <feOffset in="reduced" result="transformed" dx="0" dy="-6.9" />
-                <feGaussianBlur in="transformed" result="blurred" stdDeviation="2" />
-                <feMerge>
-                    <feMergeNode in="SourceGraphic" />
-                    <feMergeNode in="blurred" />
-                </feMerge>
-            </filter>
-            <image href="test text.png" x="50%" y="50%" width="1200" height="1200" transform="translate(-600, -600)" filter="url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#greyflood)" />
-            <image href="textures/candle.png" width="1000" height="4000" preserveAspectRatio="none" x="50%" y="50%" transform="translate(-500, -2000)" style="mix-blend-mode: overlay;" />
-            <rect x="0" y="0" width="2048" height="871" style="fill: grey; mix-blend-mode: color;"></rect>
-            <rect x="0" y="0" width="2048" height="871" style="fill: rgb(255, 123, 0); mix-blend-mode: soft-light;"></rect>
-        </svg>
+        <div id="previewcontainer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 871" style="background-color: black;">
+                <filter id="greyflood">
+                    <feColorMatrix
+                        type="matrix"
+                        values="
+                        0 0 0 0 0.25
+                        0 0 0 0 0.25
+                        0 0 0 0 0.25
+                        0 0 0 1 0"
+                    />
+                </filter>
+                <filter id="transform1" x="-50%" y="-50%" width="200%" height="200%">
+                    <feColorMatrix
+                        type="matrix"
+                        in="SourceGraphic"
+                        result="reduced"
+                        values="
+                        1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 0.069 0"
+                    />
+                    <feOffset in="reduced" result="transformed" dx="0" dy="-6.9" />
+                    <feGaussianBlur in="transformed" result="blurred" stdDeviation="2" />
+                    <feMerge>
+                        <feMergeNode in="SourceGraphic" />
+                        <feMergeNode in="blurred" />
+                    </feMerge>
+                </filter>
+                <image href="test text.png" x="50%" y="50%" width="1200" height="1200" transform="translate(-600, -600)" filter="url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#transform1) url(#greyflood)" />
+                <image href="textures/candle.png" width="1000" height="4000" preserveAspectRatio="none" x="50%" y="50%" transform="translate(-500, -2000)" style="mix-blend-mode: overlay;" />
+                <rect x="0" y="0" width="2048" height="871" style="fill: grey; mix-blend-mode: color;"></rect>
+                <rect x="0" y="0" width="2048" height="871" style="fill: rgb(255, 123, 0); mix-blend-mode: soft-light;"></rect>
+            </svg>
+        </div>
+        <div id="guicontainer">
+            <label for="tabselector">Edit:</label>
+            <select id="tabselector">
+                <option value="0">Base Shape</option>
+                <option value="1">Flame Shape</option>
+                <option value="2">Flame Texture</option>
+            </select>
+        </div>
+        <script src="code.js"></script>
     </body>
 </html>

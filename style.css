@@ -1,0 +1,23 @@
+:root {
+    --gui-width: 360px;
+}
+
+#previewcontainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - var(--gui-width));
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+#guicontainer {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    height: calc(100vh - 30px);
+    width: calc(var(--gui-width) - 30px);
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: grey;
+}
