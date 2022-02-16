@@ -1,5 +1,10 @@
 ygui.buildGUIsection([
     {
+        label: "<b>Base Shape</b>",
+        id: "labelOnly1",
+        type: "hidden"
+    },
+    {
         label: "Texture",
         id: "texture",
         type: "file",
@@ -13,6 +18,11 @@ ygui.buildGUIsection([
     }
 ], document.querySelector("#guicontainer"));
 ygui.buildGUIsection([
+    {
+        label: "<b>Flame Shape</b>",
+        id: "labelOnly2",
+        type: "hidden"
+    },
     {
         label: "Alpha Gradient",
         id: "alphagradient",
@@ -45,6 +55,11 @@ ygui.buildGUIsection([
     }
 ], document.querySelector("#guicontainer"));
 ygui.buildGUIsection([
+    {
+        label: "<b>Flame Texture</b>",
+        id: "labelOnly3",
+        type: "hidden"
+    },
     {
         label: "Energy Type",
         id: "energytype",
