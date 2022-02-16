@@ -107,5 +107,18 @@ var updateFromInputs = function() {
 };
 for (var inputId in inputElems) {
     var input = inputElems[inputId];
-    input.addEventListener("input", updateFromInputs);
+    if (inputId != "texture") {
+        input.addEventListener("input", updateFromInputs);
+    }
+    else {
+        input.addEventListener("change", function() {
+            var file = this.files[0];
+            var fileReader = new FileReader();
+            fileReader.onloadend = function(e) {
+                var dataURI = e.target.result;
+                document.querySelector("image").setAttribute("href", dataURI);
+            }
+            fileReader.readAsDataURL(file);
+        });
+    }
 }
