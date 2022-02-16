@@ -27,3 +27,20 @@
 .ygui-input {
     width: 90px;
 }
+
+#exportpanel {
+    width: calc(100vw - var(--gui-width));
+    height: 69px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#exportpanel button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

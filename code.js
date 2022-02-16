@@ -130,3 +130,12 @@ for (var inputId in inputElems) {
         });
     }
 }
+
+document.querySelector("#exportpanel button").addEventListener("click", function() {
+    rasterize(document.querySelector("svg")).then(function(downloadURL) {
+        var a = document.createElement("a");
+        a.href = downloadURL;
+        a.download = "madewithinferno.png";
+        a.click();
+    });
+});
