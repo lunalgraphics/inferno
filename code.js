@@ -2,8 +2,9 @@ var flametexturesmap = {
     "candle": "textures/candle.png",
     "fury": "textures/fury.png"
 };
-for (var x in flametexturesmap) getdataurl(flametexturesmap[x]).then(function(dataUrl) { flametexturesmap[x] = dataUrl; updateFromInputs(); });
-getdataurl("test text.png").then(function(dataUrl) { document.querySelector("image").href = dataUrl });
+getdataurl(flametexturesmap["candle"]).then(function(dataUrl) { flametexturesmap["candle"] = dataUrl; updateFromInputs(); });
+getdataurl(flametexturesmap["fury"]).then(function(dataUrl) { flametexturesmap["fury"] = dataUrl; updateFromInputs(); });
+getdataurl("test text.png").then(function(dataUrl) { document.querySelector("image").setAttribute("href", dataUrl) });
 
 var baseShapeInputs = ygui.buildGUIsection([
     {
