@@ -1,3 +1,10 @@
+var flametexturesmap = {
+    "candle": "textures/candle.png",
+    "fury": "textures/fury.png"
+};
+for (var x in flametexturesmap) getdataurl(flametexturesmap[x]).then(function(dataUrl) { flametexturesmap[x] = dataUrl; updateFromInputs(); });
+getdataurl("test text.png").then(function(dataUrl) { document.querySelector("image").href = dataUrl });
+
 var baseShapeInputs = ygui.buildGUIsection([
     {
         label: "<b>Base Shape</b>",
@@ -98,7 +105,7 @@ var updateFromInputs = function() {
     document.querySelector("#transform1 feOffset").setAttribute("dy",  inputElems.distance.value);
     document.querySelector("#transform1 feGaussianBlur").setAttribute("stdDeviation",  inputElems.softening.value);
     document.querySelector("image").setAttribute("filter",  "url(#transform1) ".repeat(parseFloat(inputElems.layers.value)) + "url(#greyflood)");
-    document.querySelectorAll("image")[1].setAttribute("href",  "textures/" + inputElems.energytype.value + ".png");
+    document.querySelectorAll("image")[1].setAttribute("href",  flametexturesmap[inputElems.energytype.value]);
     document.querySelectorAll("image")[1].setAttribute("width",  inputElems.flameswidth.value);
     document.querySelectorAll("image")[1].setAttribute("height",  inputElems.flamesheight.value);
     document.querySelectorAll("image")[1].setAttribute("transform",  `translate(${- inputElems.flameswidth.value / 2}, ${- inputElems.flamesheight.value / 2})`);
