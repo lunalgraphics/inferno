@@ -14,7 +14,7 @@ var baseShapeInputs = ygui.buildGUIsection([
         label: "Scale",
         id: "scale",
         type: "number",
-        attr: { value: 1 }
+        attr: { value: 1, step: 0.1, min: 0 }
     }
 ], document.querySelector("#guicontainer"));
 var flameShapeInputs = ygui.buildGUIsection([
@@ -91,6 +91,9 @@ var inputElems = {};
 for (var input of allInputs) inputElems[input.id] = input;
 
 var updateFromInputs = function() {
+    document.querySelector("image").setAttribute("width",  1200 * parseFloat(inputElems.scale.value));
+    document.querySelector("image").setAttribute("height",  1200 * parseFloat(inputElems.scale.value));
+    document.querySelector("image").setAttribute("transform",  `translate(${- inputElems.scale.value * 600}, ${- inputElems.scale.value * 600})`);
     document.querySelector("#transform1 feColorMatrix").setAttribute("values", "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 " + inputElems.alphagradient.value + " 0");
     document.querySelector("#transform1 feOffset").setAttribute("dy",  inputElems.distance.value);
     document.querySelector("#transform1 feGaussianBlur").setAttribute("stdDeviation",  inputElems.softening.value);
