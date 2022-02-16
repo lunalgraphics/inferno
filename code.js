@@ -1,4 +1,4 @@
-ygui.buildGUIsection([
+var baseShapeInputs = ygui.buildGUIsection([
     {
         label: "<b>Base Shape</b>",
         id: "labelOnly1",
@@ -17,7 +17,7 @@ ygui.buildGUIsection([
         attr: { value: 1 }
     }
 ], document.querySelector("#guicontainer"));
-ygui.buildGUIsection([
+var flameShapeInputs = ygui.buildGUIsection([
     {
         label: "<b>Flame Shape</b>",
         id: "labelOnly2",
@@ -54,7 +54,7 @@ ygui.buildGUIsection([
         attr: { value: 32, min: 0 }
     }
 ], document.querySelector("#guicontainer"));
-ygui.buildGUIsection([
+var flameTextureInputs = ygui.buildGUIsection([
     {
         label: "<b>Flame Texture</b>",
         id: "labelOnly3",
@@ -85,3 +85,7 @@ ygui.buildGUIsection([
         attr: { value: "#ff7b00" }
     }
 ], document.querySelector("#guicontainer"));
+
+var allInputs = baseShapeInputs.concat(flameShapeInputs).concat(flameTextureInputs);
+var inputElems = {};
+for (var input of allInputs) inputElems[input.id] = input;
