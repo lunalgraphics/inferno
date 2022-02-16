@@ -35,12 +35,12 @@ var flameShapeInputs = ygui.buildGUIsection([
         type: "number",
         attr: { value: -6.9, step: 0.1 }
     },
-    {
+    /*{
         label: "Angle",
         id: "angle",
         type: "number",
         attr: { value: 0, step: 1, min: 0, max: 360 }
-    },
+    },*/
     {
         label: "Softening",
         id: "softening",
@@ -89,3 +89,19 @@ var flameTextureInputs = ygui.buildGUIsection([
 var allInputs = baseShapeInputs.concat(flameShapeInputs).concat(flameTextureInputs);
 var inputElems = {};
 for (var input of allInputs) inputElems[input.id] = input;
+
+var updateFromInputs = function() {
+    document.querySelector("#transform1 feColorMatrix").setAttribute("values", "1 0 0 0 0\n0 1 0 0 0\n0 0 1 0 0\n0 0 0 " + inputElems.alphagradient.value + " 0");
+    document.querySelector("#transform1 feOffset").setAttribute("dy",  inputElems.distance.value);
+    document.querySelector("#transform1 feGaussianBlur").setAttribute("stdDeviation",  inputElems.softening.value);
+    document.querySelector("image").setAttribute("filter",  "url(#transform1) ".repeat(parseFloat(inputElems.layers.value)) + "url(#greyflood)");
+    document.querySelectorAll("image")[1].setAttribute("href",  "textures/" + inputElems.energytype.value + ".png");
+    document.querySelectorAll("image")[1].setAttribute("width",  inputElems.flameswidth.value);
+    document.querySelectorAll("image")[1].setAttribute("height",  inputElems.flamesheight.value);
+    document.querySelectorAll("image")[1].setAttribute("transform",  `translate(${- inputElems.flameswidth.value / 2}, ${- inputElems.flamesheight.value / 2})`);
+    document.querySelectorAll("rect")[1].style.fill = inputElems.color.value;
+};
+for (var inputId in inputElems) {
+    var input = inputElems[inputId];
+    input.addEventListener("input", updateFromInputs);
+}
