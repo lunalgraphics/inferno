@@ -100,6 +100,7 @@ var updateFromInputs = function() {
     document.querySelectorAll("image")[1].setAttribute("height",  inputElems.flamesheight.value);
     document.querySelectorAll("image")[1].setAttribute("transform",  `translate(${- inputElems.flameswidth.value / 2}, ${- inputElems.flamesheight.value / 2})`);
     document.querySelectorAll("rect")[1].style.fill = inputElems.color.value;
+    document.querySelectorAll("rect")[2].style.fill = inputElems.color.value;
 };
 for (var inputId in inputElems) {
     var input = inputElems[inputId];
