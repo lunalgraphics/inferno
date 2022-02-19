@@ -131,11 +131,21 @@ for (var inputId in inputElems) {
     }
 }
 
-document.querySelector("#exportpanel button").addEventListener("click", function() {
-    rasterize(document.querySelector("svg")).then(function(downloadURL) {
-        var a = document.createElement("a");
-        a.href = downloadURL;
-        a.download = "madewithinferno.png";
-        a.click();
+if ((new URLSearchParams(location.search)).get("portal") == "photopea") {
+    document.querySelector("#exportpanel button").innerText = "Add to Document";
+    document.querySelector("#exportpanel button").addEventListener("click", function() {
+        rasterize(document.querySelector("svg")).then(function(downloadURL) {
+            Photopea.runScript(window.parent, `app.open("${downloadURL}", null, true)`);
+        });
     });
-});
+}
+else {
+    document.querySelector("#exportpanel button").addEventListener("click", function() {
+        rasterize(document.querySelector("svg")).then(function(downloadURL) {
+            var a = document.createElement("a");
+            a.href = downloadURL;
+            a.download = "madewithinferno.png";
+            a.click();
+        });
+    });
+}
