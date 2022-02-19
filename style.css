@@ -5,6 +5,22 @@
     user-select: none;
 }
 
+::-webkit-scrollbar {
+    width: 6.9px;
+}
+
+::-webkit-scrollbar-track {
+    opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00000054;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00000027;
+}
+
 #previewcontainer {
     position: fixed;
     top: 0;
@@ -53,4 +69,19 @@
     background-color: rgb(42, 21, 0);
     color: darkorange;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media only screen and (max-width: 690px) {
+    #previewcontainer {
+        width: 100vw;
+        height: 180px;
+    }
+    #guicontainer {
+        top: 180px;
+        width: calc(100vw - 30px);
+        height: calc(100vh - 15px - 180px - 69px);
+    }
+    #exportpanel {
+        width: 100vw;
+    }
 }
