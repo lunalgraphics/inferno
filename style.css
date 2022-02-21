@@ -44,7 +44,7 @@
     overflow-x: hidden;
 }
 
-.ygui-input {
+.ygui-input, ::-webkit-file-upload-button {
     width: 90px;
     background-color: rgb(42, 21, 0);
     color: darkorange;
